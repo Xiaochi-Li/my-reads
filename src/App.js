@@ -31,10 +31,16 @@ class App extends Component {
         books : extractedBooks
       })
     })
+  }
+
+  //debugging method, delete later
+  showBookState(){
     console.log(this.state);
   }
 
   render(){
+    //const {books, showBookState, screen} = this.state
+    this.showBookState();
 
     return(
     <div className="app">
@@ -57,17 +63,23 @@ class App extends Component {
           </div>
           <div className="list-books-content">
             <BooksShelf
+              bookShelfTitle = 'Book test'
+              books = {this.state.books}>
+            </BooksShelf>
+            {/* <BooksShelf
               bookShelfTitle = 'Currently to Read'
               books = {this.state.booksReading}>
             </BooksShelf>
+
             <BooksShelf
               bookShelfTitle = 'Want to Read'
               books = {this.state.booksWantToRead}>
             </BooksShelf>
+
             <BooksShelf
               bookShelfTitle = 'Read'
               books = {this.state.booksRead}>
-            </BooksShelf>
+            </BooksShelf> */}
           </div>
 
           <div className="open-search">
