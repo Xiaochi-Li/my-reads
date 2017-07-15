@@ -13,7 +13,7 @@ class BooksShelf extends Component{
             {showingBooks.map((book,index) => (
               <li key={index} className="book">
                 <div className="book-top">
-                  <div className="book-cover" style={{ backgroundImage:book.imageLinks.thumbnail}}></div>
+                  <div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                   <div className="book-shelf-changer">
                     <select>
                       <option value="none" disabled>Move to...</option>
