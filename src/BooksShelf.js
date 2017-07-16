@@ -3,16 +3,15 @@ import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
+
 class BooksShelf extends Component{
 
   render (){
     let books = this.props.books; //books to show
     let shelfType = this.props.shelfType;
     let showingBooks;
-    console.log(this.props.shelfType);
-    //const match = new RegExp(escapeRegExp(shelfType),'i')
     showingBooks = books.filter((book)=>(book.shelf === shelfType))
-    console.log(`showing books ${showingBooks}`)
+   
     
 
     return (
