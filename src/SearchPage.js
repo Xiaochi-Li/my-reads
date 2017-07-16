@@ -13,20 +13,21 @@ class SearchPage extends Component{
     }
 
     updateBookQuery = (keywords) =>{
-        console.log(keywords)
+        
       this.setState({
           query: keywords.trim()
       })
+      console.log(this.state.query)
     }
 
-  componentDidMount(){
-      if(this.state.queryquery){
-        BooksAPI.search(this.state.query).then((extractedBook)=>(
+  searchBook = (event)=>{
+      //if(this.state.queryquery){
+        if(event.key === 'Enter'){
+        BooksAPI.search(this.state.query,10).then((extractedBook)=>(
             this.setState({resultBooks : extractedBook})
-        ))
-        console.log('a')   
-    }
-  }
+        ));
+        }}
+  
 
   render() {
       return(
@@ -38,13 +39,31 @@ class SearchPage extends Component{
                 type="text" 
                 placeholder="Search by title or author"
                 value={this.state.query}
-                onChange={(event)=> this.updateBookQuery(event.target.value)}/>
+                onChange={(event)=> this.updateBookQuery(event.target.value)}
+                onKeyPress={this.searchBook}/>
                 </div>
             </div>
 
             <div className="search-books-results">
             <ol className="books-grid">
-                {this.state.resultBooks.map((book)=>(<li>a </li>))}
+                {this.state.resultBooks.map((book,index)=>(
+              <li key={index} className="book">
+                <div className="book-top">
+                  <div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                  <div className="book-shelf-changer">
+                    <select>
+                      <option value="none" disabled>Move to...</option>
+                      <option value="currentlyReading">Currently Reading</option>
+                      <option value="wantToRead">Want to Read</option>
+                      <option value="read">Read</option>
+                      <option value="none">None</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="book-title">{book.title}</div>
+               <div className="book-authors">{book.authors}</div>
+             </li>
+            ))}
             </ol>
             </div> 
         </div>
