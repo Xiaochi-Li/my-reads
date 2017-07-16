@@ -26,7 +26,7 @@ class App extends Component {
 
   render(){
     //const {books, showBookState, screen} = this.state
-    this.showBookState();
+    //this.showBookState();
 
     return(
     <div className="app">

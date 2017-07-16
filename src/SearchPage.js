@@ -1,20 +1,23 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import PropTypes from 'escape-string-regexp'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import * as BooksAPI from './BooksAPI'
 
 class SearchPage extends Component{
-  state = {
-      query : ``,
-      resultBooks:[]
-  }
+    
+    state = {
+        query : '',
+        resultBooks:[]
+    }
 
-  updateBookQuery = (keywords) =>{
+    updateBookQuery = (keywords) =>{
+        console.log(keywords)
       this.setState({
-          query:''
+          query: keywords.trim()
       })
-  }
+    }
 
 //   componentDidMount(){
 //     BooksAPI.search(this.state.query,20).then((extractedBook)=>(
@@ -25,22 +28,18 @@ class SearchPage extends Component{
 //   }
 
   render() {
-      const SearchBar = (props) => (
-         <div className="search-books-bar">
+      return(
+        <div className="search-books">
+            <div className="search-books-bar">
             <Link className="close-search" to="/">Close</Link>
             <div className="search-books-input-wrapper">
               <input 
               type="text" 
               placeholder="Search by title or author"
               value={this.state.query}
-              onChange={(event)=> this.updateBookQuery(this.state.query)}/>
+              onChange={(event)=> this.updateBookQuery(event.target.value)}/>
             </div>
         </div>
-      )
-
-      return(
-        <div className="search-books">
-            <SearchBar/>
           {/* 
           <div className="search-books-results">
             <ol className="books-grid"></ol>
