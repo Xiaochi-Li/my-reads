@@ -3,7 +3,15 @@ import React, {Component} from 'react'
 class BooksShelf extends Component{
 
   render (){
-    let showingBooks = this.props.books //books to show
+    let books = this.props.books //books to show
+    let shelfType = this.props.books.shelfType
+    let showingBooks
+    if (shelfType) {
+      const match = new RegExp(excapeRegExp(shelfType),'i')
+      showingBooks = books.filter((book)=>(match.text(book.shelf)))
+    } else {
+      showingBooks =  books;
+    }
 
     return (
       <div className="bookshelf">
