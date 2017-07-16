@@ -62,24 +62,28 @@ class App extends Component {
             <h1>MyReads</h1>
           </div>
           <div className="list-books-content">
-            <BooksShelf
+            {/* <BooksShelf
               bookShelfTitle = 'Book test'
               books = {this.state.books}>
-            </BooksShelf>
-            {/* <BooksShelf
+            </BooksShelf> */}
+
+             <BooksShelf
               bookShelfTitle = 'Currently to Read'
-              books = {this.state.booksReading}>
+              shelfType = {`currentlyReading`}
+              books = {this.state.books}>
             </BooksShelf>
 
             <BooksShelf
               bookShelfTitle = 'Want to Read'
-              books = {this.state.booksWantToRead}>
+              shelfType = {`wantToRead`}
+              books = {this.state.books}>
             </BooksShelf>
 
             <BooksShelf
               bookShelfTitle = 'Read'
-              books = {this.state.booksRead}>
-            </BooksShelf> */}
+              shelfType = {`read`}
+              books = {this.state.books}>
+            </BooksShelf> 
           </div>
 
           <div className="open-search">
