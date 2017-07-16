@@ -19,13 +19,13 @@ class SearchPage extends Component{
       })
     }
 
-//   componentDidMount(){
-//     BooksAPI.search(this.state.query,20).then((extractedBook)=>(
-//         this.setState({
-//             resultBooks : extractedBook
-//         })
-//     ))
-//   }
+  componentDidMount(){
+      if(this.state.queryquery!=''){
+        BooksAPI.search(this.state.query).then((extractedBook)=>(
+            this.setState({resultBooks : extractedBook})
+    ))}
+    console.log(this.state.resultBooks)
+  }
 
   render() {
       return(
