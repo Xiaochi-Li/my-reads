@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 class BooksShelf extends Component{
 
