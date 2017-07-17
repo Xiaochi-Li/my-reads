@@ -1,12 +1,11 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
-import PropTypes from 'escape-string-regexp'
+import PropTypes from 'prop-types'
 
 class SearchBar extends Component{
   static propTypes = {
-    query : PropTypes.string,
-     searchBook: PropTypes.fun,
-     updateBookQuery: PropTypes.fun
+     searchBook: PropTypes.func.isRequired,
+     updateBookQuery: PropTypes.func.isRequired
   }
 
   render(){
@@ -16,12 +15,12 @@ class SearchBar extends Component{
       <div className="search-books-bar">
           <Link className="close-search" to="/">Close</Link>
           <div className="search-books-input-wrapper">
-          <input
-          type="text"
-          placeholder="Search by title or author"
-          value={ query}
-          onChange={(event)=> updateBookQuery(event.target.value)}
-          onKeyPress= {searchBook}/>
+            <input
+            type="text"
+            placeholder="Search by title or author"
+            value={ query}
+            onChange={(event)=> updateBookQuery(event.target.value)}
+            onKeyPress= {searchBook}/>
           </div>
       </div>
     )

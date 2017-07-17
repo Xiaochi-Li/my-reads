@@ -4,9 +4,9 @@ import PropTypes from 'escape-string-regexp'
 import Book from './Book.js'
 
 class SearchResults extends Component{
-  static propTypes = {
-    resultBooks : PropTypes.array,
-  }
+  // static propTypes = {
+  //   resultBooks : PropTypes.array,
+  // }
 
   render(){
     const {resultBooks} = this.props
@@ -15,7 +15,7 @@ class SearchResults extends Component{
       <ol className="books-grid">{
         resultBooks.map((book, index) => (<Book
           book = {book}
-          index = {index}
+          key = {index}
         />))
       }
       </ol>

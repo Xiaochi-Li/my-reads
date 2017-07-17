@@ -23,7 +23,7 @@ class BooksShelf extends Component{
           <ol className="books-grid">
             {showingBooks.map((book,index) => (<Book
               book = {book}
-              index = {index}
+              key = {index}
             />))}
           </ol>
         </div>

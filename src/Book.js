@@ -1,14 +1,24 @@
 import React,{Component} from 'react'
+import * as BooksAPI from './BooksAPI'
 
 class Book extends Component{
+  state = {
+    belongsTo :''
+  }
+
+  changeShalf (event,book){
+    BooksAPI.update(book,this.state.belongsTo)
+  }
 
   render(){
+    const {book} = this.props
+    console.log(book);
     return(
-      <li key={this.props.index} className="book">
+      <li  className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ backgroundImage: `url(${this.props.book.imageLinks.thumbnail})` }}></div>
+          <div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
           <div className="book-shelf-changer">
-            <select>
+            <select value={this.state.belongsTo} onChange={this.changeShalf(this.changeShalf,book)}>
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
@@ -17,8 +27,8 @@ class Book extends Component{
             </select>
           </div>
         </div>
-        <div className="book-title">{this.props.book.title}</div>
-        <div className="book-authors">{this.props.book.authors}</div>
+        <div className="book-title">{book.title}</div>
+        <div className="book-authors">{book.authors}</div>
       </li>
     )
   }
