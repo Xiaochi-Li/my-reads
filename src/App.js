@@ -9,6 +9,7 @@ import {Route, Link} from 'react-router-dom'
 class App extends Component {
   state = {
     books: [],
+    change: true
   }
 
   componentDidMount(){
@@ -17,6 +18,22 @@ class App extends Component {
         books : extractedBooks
       })
     })
+  }
+
+  changeShalf (event,book){
+    const app =  this
+    BooksAPI.update(book,event.target.value).then(() =>{
+      // if(this.state.change){
+      //   this.setState({
+      //     change: false
+      //   })
+      // } else {
+      //   this.setState({
+      //     change: true
+      //   })
+      // }
+    }
+    );
   }
 
   //debugging method, delete later
@@ -29,7 +46,9 @@ class App extends Component {
     return(
     <div className="app">
       <Route path="/search" render={()=>(
-        <SearchPage/>
+        <SearchPage
+          changeShalf = {this.changeShalf}
+        />
       )}/>
        <Route exact path="/" render={()=>(
         <div className="list-books">
@@ -38,18 +57,21 @@ class App extends Component {
           </div>
           <div className="list-books-content">
              <BooksShelf
+              changeShalf = {this.changeShalf}
               bookShelfTitle = 'Currently to Read'
               shelfType = {`currentlyReading`}
               books = {this.state.books}>
             </BooksShelf>
 
             <BooksShelf
+              changeShalf = {this.changeShalf}
               bookShelfTitle = 'Want to Read'
               shelfType = {`wantToRead`}
               books = {this.state.books}>
             </BooksShelf>
 
             <BooksShelf
+              changeShalf = {this.changeShalf}
               bookShelfTitle = 'Read'
               shelfType = {`read`}
               books = {this.state.books}>

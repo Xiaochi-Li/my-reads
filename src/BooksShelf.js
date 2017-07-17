@@ -22,6 +22,7 @@ class BooksShelf extends Component{
         <div className="bookshelf-books">
           <ol className="books-grid">
             {showingBooks.map((book,index) => (<Book
+              changeShalf = {this.props.changeShalf}
               book = {book}
               key = {index}
             />))}
