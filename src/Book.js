@@ -7,18 +7,24 @@ class Book extends Component{
   }
 
   changeShalf (event,book){
-    BooksAPI.update(book,this.state.belongsTo)
+    this.setState({
+      belongsTo: event.target.value
+    });
+    BooksAPI.update(book,event.target.value);
   }
 
   render(){
     const {book} = this.props
-    console.log(book);
+    //console.log(book);
     return(
       <li  className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+          <div className="book-cover" style={{
+            backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
+          </div>
           <div className="book-shelf-changer">
-            <select value={this.state.belongsTo} onChange={this.changeShalf(this.changeShalf,book)}>
+            <select value={this.state.belongsTo}
+              onChange={(event) => this.changeShalf(event, book)}>
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
