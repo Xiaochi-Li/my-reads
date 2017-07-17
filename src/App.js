@@ -23,15 +23,16 @@ class App extends Component {
   changeShalf (event,book){
     const app =  this
     BooksAPI.update(book,event.target.value).then(() =>{
-      // if(this.state.change){
-      //   this.setState({
-      //     change: false
-      //   })
-      // } else {
-      //   this.setState({
-      //     change: true
-      //   })
-      // }
+      console.log(this)
+      if(this.state.change){
+        this.setState({
+          change: false
+        })
+      } else {
+        this.setState({
+          change: true
+        })
+      }
     }
     );
   }
