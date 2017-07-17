@@ -5,13 +5,18 @@ import PropTypes from 'prop-types'
 
 class BooksShelf extends Component{
 
+  static propTypes = {
+    shelfType : PropTypes.string,
+    books : PropTypes.array,
+  }
+
   render (){
     let books = this.props.books; //books to show
     let shelfType = this.props.shelfType;
     let showingBooks;
     showingBooks = books.filter((book)=>(book.shelf === shelfType))
-   
-    
+
+
 
     return (
       <div className="bookshelf">
