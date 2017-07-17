@@ -40,6 +40,7 @@ class SearchPage extends Component{
             />
 
             <SearchResults
+              changeShalf = {this.props.changeShalf}
               resultBooks = {this.state.resultBooks}
             />
         </div>
