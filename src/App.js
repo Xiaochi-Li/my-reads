@@ -26,8 +26,6 @@ class App extends Component {
 
   render(){
     //const {books, showBookState, screen} = this.state
-    //this.showBookState();
-
     return(
     <div className="app">
       <Route path="/search" render={()=>(
@@ -55,7 +53,7 @@ class App extends Component {
               bookShelfTitle = 'Read'
               shelfType = {`read`}
               books = {this.state.books}>
-            </BooksShelf> 
+            </BooksShelf>
           </div>
 
           <div className="open-search">
