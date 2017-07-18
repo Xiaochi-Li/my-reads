@@ -20,19 +20,19 @@ class App extends Component {
     })
   }
 
-  changeShalf (event,book){
-    const app =  this
-    BooksAPI.update(book,event.target.value).then(() =>{
-      console.log(this)
-      if(this.state.change){
-        this.setState({
-          change: false
-        })
-      } else {
-        this.setState({
-          change: true
-        })
-      }
+  changeShalf = (event,book) =>{
+    let index = this.state.books.indexOf(book);
+    console.log(index);
+    if(index> -1){
+      this.state.books.splice(index,1)
+    }
+    const targetShelf = event.target.value;
+    book.shelf = targetShelf;
+    BooksAPI.update(book,targetShelf).then(() =>{
+
+      this.setState(state => ({
+        books: state.books.concat([ book ])
+      }))
     }
     );
   }
@@ -43,7 +43,8 @@ class App extends Component {
   }
 
   render(){
-    //const {books, showBookState, screen} = this.state
+    const {books, showBookState, screen} = this.state
+    showBookState;
     return(
     <div className="app">
       <Route path="/search" render={()=>(
