@@ -47,24 +47,31 @@ class App extends Component {
     showBookState;
     return(
     <div className="app">
+
+      {/*The search page, Only shown when search button is clicked*/}
       <Route path="/search" render={()=>(
         <SearchPage
           changeShalf = {this.changeShalf}
         />
       )}/>
+
+      {/* The Shelf page, default main page */}
        <Route exact path="/" render={()=>(
         <div className="list-books">
           <div className="list-books-title">
             <h1>MyReads</h1>
           </div>
           <div className="list-books-content">
+
+            {/* The current reading shelf */}
              <BooksShelf
               changeShalf = {this.changeShalf}
-              bookShelfTitle = 'Currently to Read'
+              bookShelfTitle = 'Currently Reading'
               shelfType = {`currentlyReading`}
               books = {this.state.books}>
             </BooksShelf>
 
+            {/* The want to read shelf */}
             <BooksShelf
               changeShalf = {this.changeShalf}
               bookShelfTitle = 'Want to Read'
@@ -72,6 +79,7 @@ class App extends Component {
               books = {this.state.books}>
             </BooksShelf>
 
+            {/* The read shelf */}
             <BooksShelf
               changeShalf = {this.changeShalf}
               bookShelfTitle = 'Read'

@@ -18,7 +18,6 @@ class Book extends Component{
             backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
           </div>
           <div className="book-shelf-changer">
-            
             <select value= "none"
               onChange={(event) => this.props.changeShalf(event, book)}>
               <option value="none" disabled>Move to...</option>
