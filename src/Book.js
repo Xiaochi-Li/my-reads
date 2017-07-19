@@ -2,11 +2,6 @@ import React,{Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 
 class Book extends Component{
-  state = {
-    belongsTo :''
-  }
-
-
 
   render(){
     const {book} = this.props
@@ -18,7 +13,7 @@ class Book extends Component{
             backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
           </div>
           <div className="book-shelf-changer">
-            <select value= "none"
+            <select value= {book.shelf}
               onChange={(event) => this.props.changeShalf(event, book)}>
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
