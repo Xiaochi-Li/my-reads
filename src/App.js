@@ -22,7 +22,6 @@ class App extends Component {
 
   changeShalf = (event,book) =>{
     let index = this.state.books.indexOf(book);
-    console.log(index);
     if(index> -1){
       this.state.books.splice(index,1)
     }
@@ -35,11 +34,6 @@ class App extends Component {
       }))
     }
     );
-  }
-
-  //debugging method, delete later
-  showBookState(){
-    console.log(this.state);
   }
 
   render(){
