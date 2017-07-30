@@ -2,7 +2,7 @@
   "name": "my-reads",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://xiaochi-li.github.io/my-reads/",
+  "homepage": "https://xiaochi-li.github.io/my-reads",
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
     "gh-pages": "^1.0.0",
